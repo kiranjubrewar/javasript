@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 6</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <p>DOM - Document Object Model</p>        
+    <a href="https://google.com">Google</a>
+
+    <button id="dark">Switch to Dark Mode</button>
+
+    <h1 id="title">Day 6</h1>
+
+    <h4 id="time"></h4>
+
+    <h4>List of Fruits</h4>
+    <ul id="list">
+
+    </ul>
+    
+    <h2 id="attribute">Hey I am a demo text</h2>
+
+    <div>
+        <p class="imp">Lorem, ipsum dolor.</p>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing.</p>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe, consequatur?</p>
+        <p>Lorem, ipsum dolor.</p>
+    </div>
+    
+    <p class="imp">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam exercitationem placeat consequuntur? Ullam illo doloremque aspernatur aliquam placeat temporibus quisquam.</p>
+
+    <!-- <button id="btn" onclick="showAlert()">Click Me</button> -->
+    <button id="btn">Click Me</button>
+
+    <script>
+        console.log("DOM Basics");
+
+// Id - #
+// Class - .
+
+// getting the elements
+/*
+1. getElementById
+2. getElementsByClassName
+3. getElementsByTagName
+4. querySelector
+5. querySelectorAll
+*/
+
+const title = document.getElementById('title');
+
+console.log(title);
+console.log(title.innerHTML);
+console.log(title.innerText);
+
+const para = document.getElementsByClassName('imp');
+
+console.log(para);
+
+const data = document.getElementsByTagName('p');
+
+console.log(data);
+
+// for (let index = 0; index < data.length; index++) {
+//     const element = data[index];
+//     console.log(element)
+    
+// }
+
+// const dataarr = [...data];
+const dataarr = Array.from(data);
+
+dataarr.forEach(el=>{
+    console.log(el);
+})
+
+// console.log(document.querySelector('.imp'));
+
+// const data1 = document.querySelectorAll('.imp');
+const data1 = document.querySelectorAll('p');
+console.log(data1);
+
+// data1.forEach(el=>{
+//     console.log(el);
+// })
+
+
+
+// Changing Attributes
+
+const attr = document.getElementById('attribute');
+
+console.log(attr.getAttribute('id'));
+
+// attr.setAttribute('style','color:red;');
+// attr.setAttribute('style','background-color:blue');
+
+attr.classList.add('blue');
+attr.classList.add('bgYellow');
+// attr.classList.remove('blue');
+// attr.classList.toggle('blue');
+// attr.classList.toggle('blue');
+
+
+// attr.style.color = "red";
+// attr.style.backgroundColor = "yellowgreen";
+// attr.style.backgroundColor = "";
+
+
+let fruits = ['apple','orange','watermelon','mango','grapes'];
+
+
+console.log(fruits);
+
+const list = document.querySelector('#list');
+console.log(list);
+
+fruits.forEach(fruit=>{
+    // list.innerText += `<li>${fruit}</li>`;
+    list.innerHTML += `<li>${fruit}</li>`;
+})
+
+
+// dataarr
+
+dataarr.forEach(para=>{
+    if(para.innerText.includes('amet')){
+        para.classList.add('highlight');
+    }
+})
+
+
+// Button Click
+
+function showAlert(){
+    alert("Hey I am an alert from the button");
+}
+
+const button = document.getElementById('btn');
+
+button.onclick = function(){
+    alert("Hey I am an alert from the button");
+}
+
+
+// get name from user and change the title
+// const name = prompt("Enter your name","Anonymous");
+
+// title.innerText += `Welcome to the family ${name}`;
+
+
+const dmode = document.getElementById('dark');
+
+dmode.onclick = function changeColor(){
+    
+    document.body.style.backgroundColor = 'black';
+    document.body.style.color = 'white';
+    document.body.style.fontFamily = 'Helvetica';
+   
+}
+
+
+const ctime = document.getElementById('time');
+
+
+function clock(){
+    let date = new Date();
+    let time = date.toLocaleTimeString();
+    ctime.innerText = time;
+}
+
+// clock();
+
+setInterval(clock,1000);
+
+
+
+
+
+    </script>
+</body>
+</html>
+
